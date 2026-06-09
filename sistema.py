@@ -1,10 +1,3 @@
-"""
-Sistema Automático de Relatórios de Poda
-==========================================
-Interface gráfica para preenchimento automático do relatório de podas
-da Equatorial utilizando modelo Word existente.
-"""
-
 import os
 import sys
 import logging
@@ -88,7 +81,7 @@ class SistemaPodaApp(ctk.CTk):
 
         subtitulo = ctk.CTkLabel(
             frame_principal,
-            text='FK Engenharia e Serviços LTDA',
+            text='FK Engenharia',
             font=ctk.CTkFont(size=12)
         )
         subtitulo.pack(pady=(0, 15))
@@ -96,7 +89,7 @@ class SistemaPodaApp(ctk.CTk):
         # ─── ID do Projeto ───────────────────────────────────────────────────
         label_id = ctk.CTkLabel(
             frame_principal,
-            text='ID do Projeto:',
+            text='Nota do Projeto:',
             font=ctk.CTkFont(size=14),
             anchor='w'
         )
@@ -104,7 +97,7 @@ class SistemaPodaApp(ctk.CTk):
 
         self.entry_id = ctk.CTkEntry(
             frame_principal,
-            placeholder_text='Ex: 440182639',
+            placeholder_text='Ex: 440100001',
             font=ctk.CTkFont(size=14),
             height=35
         )
