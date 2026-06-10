@@ -60,14 +60,14 @@ class SistemaPodaApp(ctk.CTk):
         self.geometry('730x780')
         self.resizable(False, False)
 
-        tema_inicial = self._carregar_config_tema()
-        ctk.set_appearance_mode(tema_inicial)
-        ctk.set_default_color_theme('green')
-
-        # ─── Diretórios do Projeto ───────────────────────────────────────────
+                # ─── Diretórios do Projeto ───────────────────────────────────────────
         self.dir_atual = Path(__file__).parent.resolve()
         self.pasta_modelo = self.dir_atual / 'modelo'
         self.pasta_relatorios = self.dir_atual / 'relatorios_gerados'
+
+        tema_inicial = self._carregar_config_tema()
+        ctk.set_appearance_mode(tema_inicial)
+        ctk.set_default_color_theme('green')
 
         # Garante que os diretórios existam
         self.pasta_relatorios.mkdir(parents=True, exist_ok=True)
