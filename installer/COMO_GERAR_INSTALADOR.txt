@@ -1,0 +1,143 @@
+================================================================================
+  COMO GERAR O INSTALADOR DO SISTEMA AUTOMÁTICO DE RELATÓRIOS DE PODA
+================================================================================
+
+  FK Engenharia e Serviços LTDA
+  Versao 1.0
+
+================================================================================
+  REQUISITOS
+================================================================================
+
+  1. Windows 10 ou superior (64 bits)
+  2. Python 3.10 ou superior instalado
+  3. Acesso a internet para baixar as ferramentas
+
+================================================================================
+  PASSO 1 - INSTALAR O Python (caso não tenha)
+================================================================================
+
+  Se você já tem o Python instalado, verifique com:
+      python --version
+
+  Para instalar:
+    1. Acesse https://www.python.org/downloads/
+    2. Baixe a versao mais recente do Python 3 (64-bit)
+    3. Execute o instalador
+    4. IMPORTANTE: Marque a opcao "Add Python to PATH"
+    5. Clique em "Install Now"
+
+================================================================================
+  PASSO 2 - INSTALAR AS DEPENDENCIAS DO PROJETO
+================================================================================
+
+  Abra o terminal (PowerShell ou CMD) na pasta raiz do projeto e execute:
+
+      pip install python-docx Pillow customtkinter piexif
+
+================================================================================
+  PASSO 3 - INSTALAR O PyInstaller
+================================================================================
+
+  Ainda no terminal, execute:
+
+      pip install pyinstaller
+
+================================================================================
+  PASSO 4 - GERAR O EXECUTAVEL COM PyInstaller
+================================================================================
+
+  Na pasta raiz do projeto (onde está o arquivo sistema.spec), execute:
+
+      pyinstaller sistema.spec
+
+  Isso gerara a pasta:
+
+      dist\sistema\
+
+  Contendo:
+    - sistema.exe (executavel principal)
+    - _internal\  (bibliotecas e modulos Python)
+    - assets\     (logos)
+    - modelo\     (template Word)
+    - config.json (configuracao)
+
+================================================================================
+  PASSO 5 - INSTALAR O Inno Setup
+================================================================================
+
+  1. Acesse https://jrsoftware.org/isdl.php
+  2. Baixe o Inno Setup (versao mais recente)
+  3. Execute o instalador e siga as instrucoes (next > next > install)
+
+================================================================================
+  PASSO 6 - COMPILAR O INSTALADOR
+================================================================================
+
+  Opcao A - Pelo Inno Setup Compiler (interface grafica):
+    1. Abra o Inno Setup Compiler
+    2. Va em File > Open
+    3. Selecione o arquivo: installer\setup.iss
+    4. Va em Build > Compile (ou pressione Ctrl+F9)
+    5. O instalador sera gerado em: installer\Setup_Sistema_Podas_v1.0.exe
+
+  Opcao B - Pela linha de comando:
+    1. Abra o terminal na pasta raiz do projeto
+    2. Execute:
+         "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer\setup.iss
+    3. O instalador sera gerado em: installer\Setup_Sistema_Podas_v1.0.exe
+
+================================================================================
+  PASSO 7 - EXECUTAR O INSTALADOR
+================================================================================
+
+  Navegue ate a pasta installer\ e execute:
+
+      Setup_Sistema_Podas_v1.0.exe
+
+  Siga os passos:
+      Avancar > Avancar > Instalar > Concluir
+
+  O sistema sera instalado em:
+      C:\Program Files\Sistema Relatorios de Poda\
+
+  E criara atalhos na Area de Trabalho e no Menu Iniciar.
+
+================================================================================
+  OBSERVACOES IMPORTANTES
+================================================================================
+
+  - O instalador requer permissoes de administrador para instalar em
+    C:\Program Files\
+
+  - O computador NAO precisa ter Python instalado para rodar o sistema.
+    Tudo que e necessario ja esta incluido no instalador.
+
+  - Os relatorios gerados serao salvos na pasta:
+      C:\Program Files\Sistema Relatorios de Poda\relatorios_gerados\
+
+  - O arquivo de log (sistema_poda.log) e criado na mesma pasta do programa.
+
+================================================================================
+  ESTRUTURA DO PROJETO
+================================================================================
+
+  SYSTEM/
+  ├── sistema.py              # Codigo fonte principal
+  ├── sistema.spec            # Configuracao do PyInstaller
+  ├── config.json             # Configuracao do tema
+  ├── assets/                 # Logos
+  │   ├── fk_logo.png
+  │   └── equatorial_logo.png
+  ├── modelo/                 # Template Word
+  │   └── XXXXXXX_Relatorio_de_Podas_FK_Eng_PHB.docx
+  ├── modules/                # Modulos Python
+  │   ├── photo_handler.py
+  │   └── template_handler.py
+  ├── dist/sistema/           # Executavel compilado (gerado no passo 4)
+  └── installer/              # Instalador
+      ├── setup.iss           # Script do Inno Setup
+      ├── COMO_GERAR_INSTALADOR.txt  # Este arquivo
+      └── Setup_Sistema_Podas_v1.0.exe  # Instalador final (gerado no passo 6)
+
+================================================================================

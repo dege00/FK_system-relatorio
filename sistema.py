@@ -13,11 +13,15 @@ from modules.photo_handler import PhotoHandler
 from modules.template_handler import TemplateHandler
 
 # ─── Configuração de Logging ───────────────────────────────────────────────
+if getattr(sys, 'frozen', False):
+    _dir_app = Path(sys.executable).parent.resolve()
+else:
+    _dir_app = Path(__file__).parent.resolve()
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s [%(levelname)s] %(name)s: %(message)s',
     handlers=[
-        logging.FileHandler('sistema_poda.log', encoding='utf-8'),
+        logging.FileHandler(str(_dir_app / 'sistema_poda.log'), encoding='utf-8'),
         logging.StreamHandler()
     ]
 )
@@ -61,7 +65,10 @@ class SistemaPodaApp(ctk.CTk):
         self.resizable(False, False)
 
                 # ─── Diretórios do Projeto ───────────────────────────────────────────
-        self.dir_atual = Path(__file__).parent.resolve()
+        if getattr(sys, 'frozen', False):
+            self.dir_atual = Path(sys.executable).parent.resolve()
+        else:
+            self.dir_atual = Path(__file__).parent.resolve()
         self.pasta_modelo = self.dir_atual / 'modelo'
         self.pasta_relatorios = self.dir_atual / 'relatorios_gerados'
 
