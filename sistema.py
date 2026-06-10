@@ -1,9 +1,11 @@
 import os
 import sys
+import json
 import logging
 from pathlib import Path
 from tkinter import filedialog, messagebox
 from datetime import datetime
+from PIL import Image
 
 import customtkinter as ctk
 
@@ -22,6 +24,29 @@ logging.basicConfig(
 logger = logging.getLogger('Sistema')
 
 
+class TextHandler(logging.Handler):
+    """Handler de logging que direciona mensagens para o widget de texto."""
+    def __init__(self, text_widget):
+        super().__init__()
+        self.text_widget = text_widget
+        self.setFormatter(logging.Formatter(
+            '%(asctime)s [%(levelname)s] %(message)s'
+        ))
+
+    def emit(self, record):
+        msg = self.format(record)
+        self.text_widget.after(0, self._append, msg)
+
+    def _append(self, msg):
+        try:
+            self.text_widget.configure(state='normal')
+            self.text_widget.insert('end', msg + '\n')
+            self.text_widget.see('end')
+            self.text_widget.configure(state='disabled')
+        except Exception:
+            pass
+
+
 class SistemaPodaApp(ctk.CTk):
     """
     Aplicação principal do Sistema de Relatórios de Poda.
@@ -32,9 +57,11 @@ class SistemaPodaApp(ctk.CTk):
 
         # ─── Configuração da Janela ──────────────────────────────────────────
         self.title('Sistema de Relatórios de Poda - Equatorial')
-        self.geometry('600x520')
+        self.geometry('730x780')
         self.resizable(False, False)
-        ctk.set_appearance_mode('light')
+
+        tema_inicial = self._carregar_config_tema()
+        ctk.set_appearance_mode(tema_inicial)
         ctk.set_default_color_theme('green')
 
         # ─── Diretórios do Projeto ───────────────────────────────────────────
@@ -49,14 +76,55 @@ class SistemaPodaApp(ctk.CTk):
         self.pasta_fotos_selecionada = None
         self.photo_handler = None
         self.processando = False
+        self.tema_atual = tema_inicial
 
         # ─── Construção da Interface ─────────────────────────────────────────
         self._construir_interface()
+
+        # ─── Adiciona handler de log no Text Widget ──────────────────────────
+        self._log_handler = TextHandler(self.log_text)
+        logging.getLogger().addHandler(self._log_handler)
+
+        self.log_text.configure(state='normal')
+        self.log_text.insert('end', 'Sistema Automático de Relatórios de Poda\n')
+        self.log_text.insert('end', 'FK Engenharia e Serviços LTDA\n')
+        self.log_text.insert('end', '─' * 60 + '\n')
+        self.log_text.insert('end', 'Pronto. Aguardando...\n')
+        self.log_text.see('end')
+        self.log_text.configure(state='disabled')
 
         # Centraliza a janela na tela
         self.after(100, self._centralizar)
 
         logger.info('Sistema iniciado')
+
+    def _resource_path(self, relative_path):
+        """Obtém caminho absoluto do recurso, compatível com PyInstaller."""
+        try:
+            base_path = sys._MEIPASS
+        except AttributeError:
+            base_path = self.dir_atual
+        return str(Path(base_path) / relative_path)
+
+    def _carregar_config_tema(self):
+        """Carrega a preferência de tema do arquivo config.json."""
+        config_path = self.dir_atual / 'config.json'
+        if config_path.exists():
+            try:
+                with open(config_path, 'r', encoding='utf-8') as f:
+                    return json.load(f).get('theme', 'light')
+            except Exception:
+                pass
+        return 'light'
+
+    def _salvar_config_tema(self, tema):
+        """Salva a preferência de tema no arquivo config.json."""
+        config_path = self.dir_atual / 'config.json'
+        try:
+            with open(config_path, 'w', encoding='utf-8') as f:
+                json.dump({'theme': tema}, f, indent=2)
+        except Exception as e:
+            logger.warning(f'Erro ao salvar tema: {e}')
 
     def _centralizar(self):
         """Centraliza a janela no monitor."""
@@ -67,24 +135,12 @@ class SistemaPodaApp(ctk.CTk):
 
     def _construir_interface(self):
         """Constrói todos os elementos da interface gráfica."""
+        # ─── Cabeçalho com Logos ─────────────────────────────────────────────
+        self._construir_cabecalho()
+
         # ─── Frame Principal ─────────────────────────────────────────────────
         frame_principal = ctk.CTkFrame(self, corner_radius=10)
-        frame_principal.pack(fill='both', expand=True, padx=20, pady=20)
-
-        # ─── Título ──────────────────────────────────────────────────────────
-        titulo = ctk.CTkLabel(
-            frame_principal,
-            text='Sistema de Relatórios de Poda',
-            font=ctk.CTkFont(size=20, weight='bold')
-        )
-        titulo.pack(pady=(10, 5))
-
-        subtitulo = ctk.CTkLabel(
-            frame_principal,
-            text='FK Engenharia',
-            font=ctk.CTkFont(size=12)
-        )
-        subtitulo.pack(pady=(0, 15))
+        frame_principal.pack(fill='both', expand=True, padx=20, pady=(5, 5))
 
         # ─── ID do Projeto ───────────────────────────────────────────────────
         label_id = ctk.CTkLabel(
@@ -93,7 +149,7 @@ class SistemaPodaApp(ctk.CTk):
             font=ctk.CTkFont(size=14),
             anchor='w'
         )
-        label_id.pack(fill='x', padx=30)
+        label_id.pack(fill='x', padx=30, pady=(15, 0))
 
         self.entry_id = ctk.CTkEntry(
             frame_principal,
@@ -101,7 +157,7 @@ class SistemaPodaApp(ctk.CTk):
             font=ctk.CTkFont(size=14),
             height=35
         )
-        self.entry_id.pack(fill='x', padx=30, pady=(0, 10))
+        self.entry_id.pack(fill='x', padx=30, pady=(3, 10))
 
         # ─── Pasta das Fotos ─────────────────────────────────────────────────
         label_pasta = ctk.CTkLabel(
@@ -113,7 +169,7 @@ class SistemaPodaApp(ctk.CTk):
         label_pasta.pack(fill='x', padx=30)
 
         frame_pasta = ctk.CTkFrame(frame_principal, fg_color='transparent')
-        frame_pasta.pack(fill='x', padx=30, pady=(0, 10))
+        frame_pasta.pack(fill='x', padx=30, pady=(3, 10))
 
         self.entry_pasta = ctk.CTkEntry(
             frame_pasta,
@@ -153,7 +209,7 @@ class SistemaPodaApp(ctk.CTk):
         self.label_contagem.pack(side='left', padx=(5, 0))
 
         # ─── Linha Separadora ────────────────────────────────────────────────
-        separador = ctk.CTkFrame(frame_principal, height=2, fg_color='#CCCCCC')
+        separador = ctk.CTkFrame(frame_principal, height=2, fg_color=('gray70', 'gray30'))
         separador.pack(fill='x', padx=30, pady=(5, 15))
 
         # ─── Barra de Progresso ──────────────────────────────────────────────
@@ -166,7 +222,7 @@ class SistemaPodaApp(ctk.CTk):
             frame_principal,
             text='0 / 0 fotos processadas',
             font=ctk.CTkFont(size=12),
-            text_color='#555555'
+            text_color=('gray40', 'gray60')
         )
         self.label_progresso.pack(fill='x', padx=30)
 
@@ -174,7 +230,7 @@ class SistemaPodaApp(ctk.CTk):
             frame_principal,
             text='',
             font=ctk.CTkFont(size=11),
-            text_color='#888888'
+            text_color=('gray50', 'gray50')
         )
         self.label_foto_atual.pack(fill='x', padx=30, pady=(0, 10))
 
@@ -186,16 +242,161 @@ class SistemaPodaApp(ctk.CTk):
             height=45,
             command=self._gerar_relatorio
         )
-        self.btn_gerar.pack(fill='x', padx=30, pady=(0, 10))
+        self.btn_gerar.pack(fill='x', padx=30, pady=(0, 5))
 
         # ─── Status Final ────────────────────────────────────────────────────
         self.label_status = ctk.CTkLabel(
             frame_principal,
             text='Pronto. Aguardando...',
             font=ctk.CTkFont(size=12),
-            text_color='#555555'
+            text_color=('gray40', 'gray60')
         )
         self.label_status.pack(fill='x', padx=30, pady=(0, 10))
+
+        # ─── Área de Log ─────────────────────────────────────────────────────
+        self._construir_log()
+
+        # ─── Rodapé ──────────────────────────────────────────────────────────
+        self._construir_rodape()
+
+    def _construir_cabecalho(self):
+        """Constrói o cabeçalho com logos e título central."""
+        header_frame = ctk.CTkFrame(self, height=85, corner_radius=10)
+        header_frame.pack(fill='x', padx=20, pady=(15, 5))
+        header_frame.pack_propagate(False)
+
+        # Logo FK Engenharia (esquerda)
+        try:
+            fk_path = self._resource_path('assets/fk_logo.png')
+            self._fk_img = ctk.CTkImage(
+                light_image=Image.open(fk_path),
+                dark_image=Image.open(fk_path),
+                size=(110, 45)
+            )
+            fk_label = ctk.CTkLabel(header_frame, image=self._fk_img, text='')
+            fk_label.pack(side='left', padx=(15, 5))
+        except Exception as e:
+            logger.warning(f'Logo FK não carregada: {e}')
+
+        # Texto central
+        center_frame = ctk.CTkFrame(header_frame, fg_color='transparent')
+        center_frame.pack(side='left', fill='both', expand=True)
+
+        titulo = ctk.CTkLabel(
+            center_frame,
+            text='Sistema Automático de Relatórios de Poda',
+            font=ctk.CTkFont(size=18, weight='bold')
+        )
+        titulo.pack(expand=True, anchor='center')
+
+        subtitulo = ctk.CTkLabel(
+            center_frame,
+            text='FK Engenharia e Serviços LTDA',
+            font=ctk.CTkFont(size=11)
+        )
+        subtitulo.pack(anchor='center')
+
+        # Logo Equatorial (direita)
+        try:
+            eq_path = self._resource_path('assets/equatorial_logo.png')
+            self._eq_img = ctk.CTkImage(
+                light_image=Image.open(eq_path),
+                dark_image=Image.open(eq_path),
+                size=(110, 45)
+            )
+            eq_label = ctk.CTkLabel(header_frame, image=self._eq_img, text='')
+            eq_label.pack(side='right', padx=(5, 15))
+        except Exception as e:
+            logger.warning(f'Logo Equatorial não carregada: {e}')
+
+    def _construir_log(self):
+        """Constrói a área de log com scrollbar e botões."""
+        log_frame = ctk.CTkFrame(self, corner_radius=10)
+        log_frame.pack(fill='x', padx=20, pady=(0, 5))
+
+        log_header = ctk.CTkFrame(log_frame, fg_color='transparent')
+        log_header.pack(fill='x', padx=15, pady=(8, 0))
+
+        lbl_log = ctk.CTkLabel(
+            log_header,
+            text='📋 Log do Sistema',
+            font=ctk.CTkFont(size=13, weight='bold')
+        )
+        lbl_log.pack(side='left')
+
+        self.btn_toggle_tema = ctk.CTkButton(
+            log_header,
+            text='🌙 Modo Escuro' if self.tema_atual == 'light' else '☀️ Modo Claro',
+            font=ctk.CTkFont(size=11),
+            width=130,
+            height=28,
+            fg_color=('gray60', 'gray30'),
+            hover_color=('gray40', 'gray20'),
+            command=self._toggle_tema
+        )
+        self.btn_toggle_tema.pack(side='right', padx=(5, 0))
+
+        self.btn_limpar_log = ctk.CTkButton(
+            log_header,
+            text='🧹 Limpar Log',
+            font=ctk.CTkFont(size=11),
+            width=110,
+            height=28,
+            fg_color=('gray60', 'gray30'),
+            hover_color=('gray40', 'gray20'),
+            command=self._limpar_log
+        )
+        self.btn_limpar_log.pack(side='right')
+
+        self.log_text = ctk.CTkTextbox(
+            log_frame,
+            height=130,
+            font=ctk.CTkFont(size=11, family='Consolas'),
+            state='disabled',
+            wrap='word'
+        )
+        self.log_text.pack(fill='x', padx=15, pady=(5, 12))
+
+    def _construir_rodape(self):
+        """Constrói o rodapé com versão e créditos."""
+        footer_frame = ctk.CTkFrame(self, fg_color='transparent')
+        footer_frame.pack(fill='x', padx=20, pady=(0, 15))
+
+        versao = ctk.CTkLabel(
+            footer_frame,
+            text='Versão 1.0',
+            font=ctk.CTkFont(size=10),
+            text_color=('gray50', 'gray50')
+        )
+        versao.pack(side='left')
+
+        creditos = ctk.CTkLabel(
+            footer_frame,
+            text='Desenvolvido por Diego Gomes',
+            font=ctk.CTkFont(size=10),
+            text_color=('gray50', 'gray50')
+        )
+        creditos.pack(side='right')
+
+    def _toggle_tema(self):
+        """Alterna entre modo claro e escuro instantaneamente."""
+        if self.tema_atual == 'light':
+            ctk.set_appearance_mode('dark')
+            self.tema_atual = 'dark'
+            self.btn_toggle_tema.configure(text='☀️ Modo Claro')
+        else:
+            ctk.set_appearance_mode('light')
+            self.tema_atual = 'light'
+            self.btn_toggle_tema.configure(text='🌙 Modo Escuro')
+        self._salvar_config_tema(self.tema_atual)
+        logger.info(f'Tema alterado para: {self.tema_atual}')
+
+    def _limpar_log(self):
+        """Limpa apenas o conteúdo da área de log."""
+        self.log_text.configure(state='normal')
+        self.log_text.delete('1.0', 'end')
+        self.log_text.configure(state='disabled')
+        logger.info('Log limpo pelo usuário')
 
     def _selecionar_pasta(self):
         """Abre o diálogo para selecionar a pasta de fotos."""
