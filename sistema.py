@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import shutil
 import logging
 from pathlib import Path
 from tkinter import filedialog, messagebox
@@ -79,6 +80,9 @@ class SistemaPodaApp(ctk.CTk):
         # Garante que os diretórios existam
         self.pasta_relatorios.mkdir(parents=True, exist_ok=True)
 
+        # Verifica e cria a estrutura necessária (modelo, etc.)
+        self._verificar_estrutura()
+
         # ─── Variáveis de Estado ─────────────────────────────────────────────
         self.pasta_fotos_selecionada = None
         self.photo_handler = None
@@ -112,6 +116,24 @@ class SistemaPodaApp(ctk.CTk):
         except AttributeError:
             base_path = self.dir_atual
         return str(Path(base_path) / relative_path)
+
+    def _verificar_estrutura(self):
+        """Verifica e cria automaticamente a estrutura necessária do sistema."""
+        # Cria a pasta modelo se não existir
+        if not self.pasta_modelo.exists():
+            self.pasta_modelo.mkdir(parents=True, exist_ok=True)
+            logger.info('Pasta modelo criada.')
+
+        # Verifica se o template já existe na pasta modelo
+        templates = list(self.pasta_modelo.glob('*_Relatorio_de_Podas_FK_Eng_PHB.docx'))
+        if not templates:
+            origem_modelo = Path(self._resource_path('modelo'))
+            templates_origem = list(origem_modelo.glob('*_Relatorio_de_Podas_FK_Eng_PHB.docx'))
+            if templates_origem:
+                shutil.copy2(str(templates_origem[0]), str(self.pasta_modelo / templates_origem[0].name))
+                logger.info('Modelo padrão copiado.')
+
+        logger.info('Estrutura do sistema verificada.')
 
     def _carregar_config_tema(self):
         """Carrega a preferência de tema do arquivo config.json."""
