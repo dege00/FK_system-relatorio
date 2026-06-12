@@ -1,54 +1,90 @@
+<div align="center">
+
 # Sistema Automático de Relatórios
 
-![Layout do Sistema](img/Layout.png)
+<img src="img/Layout.png" alt="Layout do Sistema" width="900"/>
 
-## Sobre
+### FK Engenharia e Serviços LTDA
 
-Este projeto foi desenvolvido para me auxiliar na elaboração de relatórios técnicos utilizados no dia a dia de campo.
+Automação de relatórios técnicos de Podas e Obras utilizando Python.
 
-A ideia surgiu devido ao tempo gasto organizando fotografias, preenchendo documentos e montando evidências manualmente. Como muitas dessas tarefas eram repetitivas, decidi criar uma ferramenta capaz de automatizar parte desse processo.
-
-Atualmente o sistema é capaz de gerar relatórios de Podas e Obras, organizando as evidências fotográficas e preenchendo automaticamente os modelos utilizados pela equipe.
-
-## Objetivo
-
-O projeto não possui fins lucrativos.
-
-Ele foi criado exclusivamente para facilitar atividades relacionadas ao meu trabalho e também como forma de aprendizado em programação e automação de processos.
-
-## Tecnologias Utilizadas
-
-- Python
-- CustomTkinter
-- Python-Docx
-- Pillow
-- Piexif
-- PyInstaller
-
-## Inteligência Artificial
-
-Grande parte do desenvolvimento contou com o auxílio de ferramentas de Inteligência Artificial.
-
-A IA foi utilizada como apoio para pesquisa, aprendizado, correção de erros e implementação de funcionalidades, permitindo que o projeto evoluísse mesmo sem experiência profissional na área de desenvolvimento de software.
-
-## Funcionalidades
-
-- Geração automática de relatórios de Podas
-- Geração automática de relatórios de Obras
-- Organização automática de evidências fotográficas
-- Preenchimento automático de documentos Word
-- Interface gráfica simples
-- Modo claro e modo escuro
-- Registro de logs das operações
-
-## Aviso
-
-Este repositório foi criado para demonstração do projeto e documentação do seu desenvolvimento.
-
-O código-fonte não poderá ser utilizado, copiado, redistribuído ou comercializado sem autorização prévia do autor.
-
-Todos os direitos reservados.
+</div>
 
 ---
 
-Desenvolvido por Diego.
+## Sobre o Projeto
+
+Este projeto nasceu de uma necessidade real do meu dia a dia profissional.
+
+Grande parte do tempo era gasto organizando fotografias, preenchendo documentos Word e montando evidências manualmente. Com isso surgiu a ideia de desenvolver uma ferramenta capaz de automatizar esse processo e tornar a elaboração dos relatórios mais rápida e organizada.
+
+O sistema foi criado inicialmente para relatórios de Podas e posteriormente expandido para atender também relatórios de Obras.
+
+---
+
+## Funcionalidades
+
+✔ Geração automática de relatórios de Podas
+
+✔ Geração automática de relatórios de Obras
+
+✔ Organização automática das evidências fotográficas
+
+✔ Preenchimento automático de documentos Word (.docx)
+
+✔ Interface gráfica desenvolvida em Python
+
+✔ Modo Claro e Modo Escuro
+
+✔ Registro de Logs
+
+✔ Geração de executável para distribuição interna
+
+---
+
+## Tecnologias Utilizadas
+
+```text
+Python
+CustomTkinter
+Python-Docx
+Pillow (PIL)
+Piexif
+PyInstaller
+```
+
+---
+
+## Inteligência Artificial
+
+O desenvolvimento deste projeto contou com grande apoio de ferramentas de Inteligência Artificial.
+
+A IA foi utilizada como ferramenta de estudo, auxílio na resolução de problemas, correção de erros e implementação de funcionalidades, permitindo acelerar o desenvolvimento e adquirir conhecimento durante todo o processo.
+
+---
+
+## Objetivo
+
+Este projeto não possui fins lucrativos.
+
+Foi desenvolvido para auxiliar nas atividades realizadas durante minha rotina de trabalho e também como forma de aprendizado em programação, automação de documentos e desenvolvimento de sistemas desktop.
+
+---
+
+## Aviso
+
+Este repositório tem finalidade de demonstração, estudo e documentação do projeto.
+
+Todo o código-fonte presente neste repositório é protegido por direitos autorais.
+
+Não é permitida a utilização comercial, redistribuição, modificação ou reprodução deste sistema sem autorização prévia do autor.
+
+---
+
+<div align="center">
+
+**Desenvolvido por Diego**
+
+2026
+
+</div>
