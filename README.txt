@@ -4,7 +4,7 @@
 
 ### Automação de Relatórios de Podas e Obras
 
-<img src="./img/Layout.png" width="1000">
+<img src="img/layout.png" width="1000">
 
 <br>
 
