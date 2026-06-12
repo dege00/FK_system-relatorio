@@ -3,3 +3,155 @@
 2026-06-11 08:00:09,068 [INFO] Sistema: Estrutura do sistema verificada.
 2026-06-11 08:00:10,088 [INFO] Sistema: Sistema iniciado
 2026-06-11 08:00:17,229 [INFO] Sistema: Tema alterado para: dark
+2026-06-11 08:00:31,512 [INFO] modules.photo_handler: 70 fotos carregadas de C:\Users\FKENG-PHB\Documents\DG\G2M\PODAS\440182639\EV1
+2026-06-11 08:00:31,513 [INFO] Sistema: Pasta selecionada: C:/Users/FKENG-PHB/Documents/DG/G2M/PODAS/440182639/EV1 (70 fotos)
+2026-06-11 08:00:33,058 [INFO] Sistema: Template carregado: XXXXXXX_Relatorio_de_Podas_FK_Eng_PHB.docx
+2026-06-11 08:00:33,060 [INFO] Sistema: Processando 70 fotos...
+2026-06-11 08:00:33,061 [INFO] Sistema: Ordem cronológica das fotos:
+2026-06-11 08:00:33,061 [INFO] Sistema:   1. WhatsApp Image 2026-06-05 at 18.14.17.jpeg - 2026-06-09 10:33:55.995995
+2026-06-11 08:00:33,061 [INFO] Sistema:   2. WhatsApp Image 2026-06-05 at 18.14.17 (1).jpeg - 2026-06-09 10:33:56.001887
+2026-06-11 08:00:33,061 [INFO] Sistema:   3. WhatsApp Image 2026-06-05 at 18.14.17 (2).jpeg - 2026-06-09 10:33:56.006736
+2026-06-11 08:00:33,061 [INFO] Sistema:   4. WhatsApp Image 2026-06-05 at 18.14.17 (3).jpeg - 2026-06-09 10:33:56.012316
+2026-06-11 08:00:33,061 [INFO] Sistema:   5. WhatsApp Image 2026-06-05 at 18.14.18 (2).jpeg - 2026-06-09 10:33:56.031019
+2026-06-11 08:00:33,061 [INFO] Sistema:   6. WhatsApp Image 2026-06-05 at 18.14.18.jpeg - 2026-06-09 10:34:03.336630
+2026-06-11 08:00:33,061 [INFO] Sistema:   7. WhatsApp Image 2026-06-05 at 18.14.18 (1).jpeg - 2026-06-09 10:34:03.342629
+2026-06-11 08:00:33,061 [INFO] Sistema:   8. WhatsApp Image 2026-06-05 at 18.14.19.jpeg - 2026-06-09 10:34:03.350982
+2026-06-11 08:00:33,061 [INFO] Sistema:   9. WhatsApp Image 2026-06-05 at 18.14.19 (1).jpeg - 2026-06-09 10:34:03.356066
+2026-06-11 08:00:33,061 [INFO] Sistema:   10. WhatsApp Image 2026-06-05 at 18.14.19 (2).jpeg - 2026-06-09 10:34:03.359366
+2026-06-11 08:00:33,061 [INFO] Sistema:   11. WhatsApp Image 2026-06-05 at 18.14.19 (3).jpeg - 2026-06-09 10:34:03.363996
+2026-06-11 08:00:33,061 [INFO] Sistema:   12. WhatsApp Image 2026-06-05 at 18.14.20.jpeg - 2026-06-09 10:34:03.368533
+2026-06-11 08:00:33,062 [INFO] Sistema:   13. WhatsApp Image 2026-06-05 at 18.14.20 (1).jpeg - 2026-06-09 10:34:03.372208
+2026-06-11 08:00:33,062 [INFO] Sistema:   14. WhatsApp Image 2026-06-05 at 18.14.20 (2).jpeg - 2026-06-09 10:34:03.377505
+2026-06-11 08:00:33,062 [INFO] Sistema:   15. WhatsApp Image 2026-06-05 at 18.14.20 (3).jpeg - 2026-06-09 10:34:03.383105
+2026-06-11 08:00:33,062 [INFO] Sistema:   16. WhatsApp Image 2026-06-05 at 18.14.20 (4).jpeg - 2026-06-09 10:34:03.388750
+2026-06-11 08:00:33,062 [INFO] Sistema:   17. WhatsApp Image 2026-06-05 at 18.14.21.jpeg - 2026-06-09 10:34:03.396942
+2026-06-11 08:00:33,062 [INFO] Sistema:   18. WhatsApp Image 2026-06-05 at 18.14.21 (1).jpeg - 2026-06-09 10:34:03.402452
+2026-06-11 08:00:33,062 [INFO] Sistema:   19. WhatsApp Image 2026-06-05 at 18.14.21 (2).jpeg - 2026-06-09 10:34:03.409653
+2026-06-11 08:00:33,062 [INFO] Sistema:   20. WhatsApp Image 2026-06-05 at 18.14.21 (3).jpeg - 2026-06-09 10:34:03.414884
+2026-06-11 08:00:33,062 [INFO] Sistema:   21. WhatsApp Image 2026-06-05 at 18.14.21 (4).jpeg - 2026-06-09 10:34:03.419889
+2026-06-11 08:00:33,062 [INFO] Sistema:   22. WhatsApp Image 2026-06-05 at 18.14.22.jpeg - 2026-06-09 10:34:03.425948
+2026-06-11 08:00:33,062 [INFO] Sistema:   23. WhatsApp Image 2026-06-05 at 18.14.22 (1).jpeg - 2026-06-09 10:34:03.431835
+2026-06-11 08:00:33,063 [INFO] Sistema:   24. WhatsApp Image 2026-06-05 at 18.14.22 (3).jpeg - 2026-06-09 10:34:03.440190
+2026-06-11 08:00:33,063 [INFO] Sistema:   25. WhatsApp Image 2026-06-05 at 18.14.23.jpeg - 2026-06-09 10:34:03.442680
+2026-06-11 08:00:33,063 [INFO] Sistema:   26. WhatsApp Image 2026-06-05 at 18.14.23 (1).jpeg - 2026-06-09 10:34:03.446451
+2026-06-11 08:00:33,063 [INFO] Sistema:   27. WhatsApp Image 2026-06-05 at 18.14.23 (2).jpeg - 2026-06-09 10:34:03.449965
+2026-06-11 08:00:33,063 [INFO] Sistema:   28. WhatsApp Image 2026-06-05 at 18.14.23 (3).jpeg - 2026-06-09 10:34:03.452304
+2026-06-11 08:00:33,063 [INFO] Sistema:   29. WhatsApp Image 2026-06-05 at 18.14.24.jpeg - 2026-06-09 10:34:03.456074
+2026-06-11 08:00:33,063 [INFO] Sistema:   30. WhatsApp Image 2026-06-05 at 18.14.24 (1).jpeg - 2026-06-09 10:34:03.459949
+2026-06-11 08:00:33,063 [INFO] Sistema:   31. WhatsApp Image 2026-06-05 at 18.14.24 (2).jpeg - 2026-06-09 10:34:03.466860
+2026-06-11 08:00:33,063 [INFO] Sistema:   32. WhatsApp Image 2026-06-05 at 18.14.24 (3).jpeg - 2026-06-09 10:34:03.472608
+2026-06-11 08:00:33,063 [INFO] Sistema:   33. WhatsApp Image 2026-06-05 at 18.14.25.jpeg - 2026-06-09 10:34:03.477274
+2026-06-11 08:00:33,063 [INFO] Sistema:   34. WhatsApp Image 2026-06-05 at 18.14.25 (1).jpeg - 2026-06-09 10:34:03.481951
+2026-06-11 08:00:33,063 [INFO] Sistema:   35. WhatsApp Image 2026-06-05 at 18.14.25 (2).jpeg - 2026-06-09 10:34:03.485455
+2026-06-11 08:00:33,063 [INFO] Sistema:   36. WhatsApp Image 2026-06-05 at 18.14.25 (3).jpeg - 2026-06-09 10:34:03.493818
+2026-06-11 08:00:33,063 [INFO] Sistema:   37. WhatsApp Image 2026-06-05 at 18.14.25 (4).jpeg - 2026-06-09 10:34:03.498557
+2026-06-11 08:00:33,064 [INFO] Sistema:   38. WhatsApp Image 2026-06-05 at 18.14.26 (1).jpeg - 2026-06-09 10:34:03.505819
+2026-06-11 08:00:33,064 [INFO] Sistema:   39. WhatsApp Image 2026-06-05 at 18.14.26 (2).jpeg - 2026-06-09 10:34:03.510689
+2026-06-11 08:00:33,064 [INFO] Sistema:   40. WhatsApp Image 2026-06-05 at 18.14.26.jpeg - 2026-06-09 10:34:12.292844
+2026-06-11 08:00:33,064 [INFO] Sistema:   41. WhatsApp Image 2026-06-05 at 18.14.27.jpeg - 2026-06-09 10:34:12.297751
+2026-06-11 08:00:33,064 [INFO] Sistema:   42. WhatsApp Image 2026-06-05 at 18.14.27 (1).jpeg - 2026-06-09 10:34:12.301329
+2026-06-11 08:00:33,064 [INFO] Sistema:   43. WhatsApp Image 2026-06-05 at 18.14.27 (2).jpeg - 2026-06-09 10:34:12.305551
+2026-06-11 08:00:33,064 [INFO] Sistema:   44. WhatsApp Image 2026-06-05 at 18.14.27 (3).jpeg - 2026-06-09 10:34:12.312853
+2026-06-11 08:00:33,064 [INFO] Sistema:   45. WhatsApp Image 2026-06-05 at 18.14.28.jpeg - 2026-06-09 10:34:12.319094
+2026-06-11 08:00:33,064 [INFO] Sistema:   46. WhatsApp Image 2026-06-05 at 18.14.28 (1).jpeg - 2026-06-09 10:34:12.323657
+2026-06-11 08:00:33,064 [INFO] Sistema:   47. WhatsApp Image 2026-06-05 at 18.14.28 (2).jpeg - 2026-06-09 10:34:12.330562
+2026-06-11 08:00:33,064 [INFO] Sistema:   48. WhatsApp Image 2026-06-05 at 18.14.28 (3).jpeg - 2026-06-09 10:34:12.336310
+2026-06-11 08:00:33,064 [INFO] Sistema:   49. WhatsApp Image 2026-06-05 at 18.14.28 (4).jpeg - 2026-06-09 10:34:12.340039
+2026-06-11 08:00:33,064 [INFO] Sistema:   50. WhatsApp Image 2026-06-05 at 18.14.29.jpeg - 2026-06-09 10:34:12.346517
+2026-06-11 08:00:33,064 [INFO] Sistema:   51. WhatsApp Image 2026-06-05 at 18.14.29 (1).jpeg - 2026-06-09 10:34:12.354214
+2026-06-11 08:00:33,064 [INFO] Sistema:   52. WhatsApp Image 2026-06-05 at 18.14.29 (2).jpeg - 2026-06-09 10:34:12.364965
+2026-06-11 08:00:33,064 [INFO] Sistema:   53. WhatsApp Image 2026-06-05 at 18.14.29 (3).jpeg - 2026-06-09 10:34:12.371543
+2026-06-11 08:00:33,064 [INFO] Sistema:   54. WhatsApp Image 2026-06-05 at 18.14.30.jpeg - 2026-06-09 10:34:12.377311
+2026-06-11 08:00:33,064 [INFO] Sistema:   55. WhatsApp Image 2026-06-05 at 18.14.30 (1).jpeg - 2026-06-09 10:34:12.383792
+2026-06-11 08:00:33,064 [INFO] Sistema:   56. WhatsApp Image 2026-06-05 at 18.14.30 (2).jpeg - 2026-06-09 10:34:12.388695
+2026-06-11 08:00:33,064 [INFO] Sistema:   57. WhatsApp Image 2026-06-05 at 18.14.30 (3).jpeg - 2026-06-09 10:34:12.397635
+2026-06-11 08:00:33,064 [INFO] Sistema:   58. WhatsApp Image 2026-06-05 at 18.14.30 (4).jpeg - 2026-06-09 10:34:12.405333
+2026-06-11 08:00:33,064 [INFO] Sistema:   59. WhatsApp Image 2026-06-05 at 18.14.31.jpeg - 2026-06-09 10:34:12.422699
+2026-06-11 08:00:33,064 [INFO] Sistema:   60. WhatsApp Image 2026-06-05 at 18.14.31 (1).jpeg - 2026-06-09 10:34:12.430841
+2026-06-11 08:00:33,065 [INFO] Sistema:   61. WhatsApp Image 2026-06-05 at 18.14.31 (2).jpeg - 2026-06-09 10:34:12.436978
+2026-06-11 08:00:33,065 [INFO] Sistema:   62. WhatsApp Image 2026-06-05 at 18.14.31 (3).jpeg - 2026-06-09 10:34:12.445590
+2026-06-11 08:00:33,065 [INFO] Sistema:   63. WhatsApp Image 2026-06-05 at 18.14.32.jpeg - 2026-06-09 10:34:12.451744
+2026-06-11 08:00:33,065 [INFO] Sistema:   64. WhatsApp Image 2026-06-05 at 18.14.32 (1).jpeg - 2026-06-09 10:34:12.457249
+2026-06-11 08:00:33,065 [INFO] Sistema:   65. WhatsApp Image 2026-06-05 at 18.14.32 (2).jpeg - 2026-06-09 10:34:12.464153
+2026-06-11 08:00:33,065 [INFO] Sistema:   66. WhatsApp Image 2026-06-05 at 18.14.32 (3).jpeg - 2026-06-09 10:34:12.468694
+2026-06-11 08:00:33,065 [INFO] Sistema:   67. WhatsApp Image 2026-06-05 at 18.14.33 (1).jpeg - 2026-06-09 10:34:12.481584
+2026-06-11 08:00:33,065 [INFO] Sistema:   68. WhatsApp Image 2026-06-05 at 18.14.33 (2).jpeg - 2026-06-09 10:34:12.486136
+2026-06-11 08:00:33,065 [INFO] Sistema:   69. WhatsApp Image 2026-06-05 at 18.14.33 (3).jpeg - 2026-06-09 10:34:12.496205
+2026-06-11 08:00:33,065 [INFO] Sistema:   70. WhatsApp Image 2026-06-05 at 18.14.33 (4).jpeg - 2026-06-09 10:34:12.503421
+2026-06-11 08:00:33,088 [INFO] modules.template_handler: Tabela de evidências encontrada: 78 linhas × 2 colunas
+2026-06-11 08:00:33,089 [INFO] modules.template_handler: Placeholder substituído: XXXXXXX → 1111111111
+2026-06-11 08:00:33,090 [INFO] modules.template_handler: Preenchendo 70 fotos na tabela de evidências
+2026-06-11 08:00:33,091 [INFO] modules.template_handler: Capacidade atual: 78 fotos (39 linhas de foto)
+2026-06-11 08:00:33,095 [INFO] modules.template_handler: Foto 1/70: WhatsApp Image 2026-06-05 at 18.14.17.jpeg → linha 0, coluna 0
+2026-06-11 08:00:33,102 [INFO] modules.template_handler: Foto 2/70: WhatsApp Image 2026-06-05 at 18.14.17 (1).jpeg → linha 0, coluna 1
+2026-06-11 08:00:33,107 [INFO] modules.template_handler: Foto 3/70: WhatsApp Image 2026-06-05 at 18.14.17 (2).jpeg → linha 2, coluna 0
+2026-06-11 08:00:33,111 [INFO] modules.template_handler: Foto 4/70: WhatsApp Image 2026-06-05 at 18.14.17 (3).jpeg → linha 2, coluna 1
+2026-06-11 08:00:33,119 [INFO] modules.template_handler: Foto 5/70: WhatsApp Image 2026-06-05 at 18.14.18 (2).jpeg → linha 4, coluna 0
+2026-06-11 08:00:33,124 [INFO] modules.template_handler: Foto 6/70: WhatsApp Image 2026-06-05 at 18.14.18.jpeg → linha 4, coluna 1
+2026-06-11 08:00:33,130 [INFO] modules.template_handler: Foto 7/70: WhatsApp Image 2026-06-05 at 18.14.18 (1).jpeg → linha 6, coluna 0
+2026-06-11 08:00:33,138 [INFO] modules.template_handler: Foto 8/70: WhatsApp Image 2026-06-05 at 18.14.19.jpeg → linha 6, coluna 1
+2026-06-11 08:00:33,144 [INFO] modules.template_handler: Foto 9/70: WhatsApp Image 2026-06-05 at 18.14.19 (1).jpeg → linha 8, coluna 0
+2026-06-11 08:00:33,154 [INFO] modules.template_handler: Foto 10/70: WhatsApp Image 2026-06-05 at 18.14.19 (2).jpeg → linha 8, coluna 1
+2026-06-11 08:00:33,164 [INFO] modules.template_handler: Foto 11/70: WhatsApp Image 2026-06-05 at 18.14.19 (3).jpeg → linha 10, coluna 0
+2026-06-11 08:00:33,172 [INFO] modules.template_handler: Foto 12/70: WhatsApp Image 2026-06-05 at 18.14.20.jpeg → linha 10, coluna 1
+2026-06-11 08:00:33,181 [INFO] modules.template_handler: Foto 13/70: WhatsApp Image 2026-06-05 at 18.14.20 (1).jpeg → linha 12, coluna 0
+2026-06-11 08:00:33,189 [INFO] modules.template_handler: Foto 14/70: WhatsApp Image 2026-06-05 at 18.14.20 (2).jpeg → linha 12, coluna 1
+2026-06-11 08:00:33,197 [INFO] modules.template_handler: Foto 15/70: WhatsApp Image 2026-06-05 at 18.14.20 (3).jpeg → linha 14, coluna 0
+2026-06-11 08:00:33,207 [INFO] modules.template_handler: Foto 16/70: WhatsApp Image 2026-06-05 at 18.14.20 (4).jpeg → linha 14, coluna 1
+2026-06-11 08:00:33,215 [INFO] modules.template_handler: Foto 17/70: WhatsApp Image 2026-06-05 at 18.14.21.jpeg → linha 16, coluna 0
+2026-06-11 08:00:33,222 [INFO] modules.template_handler: Foto 18/70: WhatsApp Image 2026-06-05 at 18.14.21 (1).jpeg → linha 16, coluna 1
+2026-06-11 08:00:33,230 [INFO] modules.template_handler: Foto 19/70: WhatsApp Image 2026-06-05 at 18.14.21 (2).jpeg → linha 18, coluna 0
+2026-06-11 08:00:33,240 [INFO] modules.template_handler: Foto 20/70: WhatsApp Image 2026-06-05 at 18.14.21 (3).jpeg → linha 18, coluna 1
+2026-06-11 08:00:33,250 [INFO] modules.template_handler: Foto 21/70: WhatsApp Image 2026-06-05 at 18.14.21 (4).jpeg → linha 20, coluna 0
+2026-06-11 08:00:33,258 [INFO] modules.template_handler: Foto 22/70: WhatsApp Image 2026-06-05 at 18.14.22.jpeg → linha 20, coluna 1
+2026-06-11 08:00:33,266 [INFO] modules.template_handler: Foto 23/70: WhatsApp Image 2026-06-05 at 18.14.22 (1).jpeg → linha 22, coluna 0
+2026-06-11 08:00:33,274 [INFO] modules.template_handler: Foto 24/70: WhatsApp Image 2026-06-05 at 18.14.22 (3).jpeg → linha 22, coluna 1
+2026-06-11 08:00:33,283 [INFO] modules.template_handler: Foto 25/70: WhatsApp Image 2026-06-05 at 18.14.23.jpeg → linha 24, coluna 0
+2026-06-11 08:00:33,292 [INFO] modules.template_handler: Foto 26/70: WhatsApp Image 2026-06-05 at 18.14.23 (1).jpeg → linha 24, coluna 1
+2026-06-11 08:00:33,301 [INFO] modules.template_handler: Foto 27/70: WhatsApp Image 2026-06-05 at 18.14.23 (2).jpeg → linha 26, coluna 0
+2026-06-11 08:00:33,313 [INFO] modules.template_handler: Foto 28/70: WhatsApp Image 2026-06-05 at 18.14.23 (3).jpeg → linha 26, coluna 1
+2026-06-11 08:00:33,325 [INFO] modules.template_handler: Foto 29/70: WhatsApp Image 2026-06-05 at 18.14.24.jpeg → linha 28, coluna 0
+2026-06-11 08:00:33,338 [INFO] modules.template_handler: Foto 30/70: WhatsApp Image 2026-06-05 at 18.14.24 (1).jpeg → linha 28, coluna 1
+2026-06-11 08:00:33,349 [INFO] modules.template_handler: Foto 31/70: WhatsApp Image 2026-06-05 at 18.14.24 (2).jpeg → linha 30, coluna 0
+2026-06-11 08:00:33,361 [INFO] modules.template_handler: Foto 32/70: WhatsApp Image 2026-06-05 at 18.14.24 (3).jpeg → linha 30, coluna 1
+2026-06-11 08:00:33,375 [INFO] modules.template_handler: Foto 33/70: WhatsApp Image 2026-06-05 at 18.14.25.jpeg → linha 32, coluna 0
+2026-06-11 08:00:33,387 [INFO] modules.template_handler: Foto 34/70: WhatsApp Image 2026-06-05 at 18.14.25 (1).jpeg → linha 32, coluna 1
+2026-06-11 08:00:33,399 [INFO] modules.template_handler: Foto 35/70: WhatsApp Image 2026-06-05 at 18.14.25 (2).jpeg → linha 34, coluna 0
+2026-06-11 08:00:33,409 [INFO] modules.template_handler: Foto 36/70: WhatsApp Image 2026-06-05 at 18.14.25 (3).jpeg → linha 34, coluna 1
+2026-06-11 08:00:33,419 [INFO] modules.template_handler: Foto 37/70: WhatsApp Image 2026-06-05 at 18.14.25 (4).jpeg → linha 36, coluna 0
+2026-06-11 08:00:33,430 [INFO] modules.template_handler: Foto 38/70: WhatsApp Image 2026-06-05 at 18.14.26 (1).jpeg → linha 36, coluna 1
+2026-06-11 08:00:33,441 [INFO] modules.template_handler: Foto 39/70: WhatsApp Image 2026-06-05 at 18.14.26 (2).jpeg → linha 38, coluna 0
+2026-06-11 08:00:33,453 [INFO] modules.template_handler: Foto 40/70: WhatsApp Image 2026-06-05 at 18.14.26.jpeg → linha 38, coluna 1
+2026-06-11 08:00:33,467 [INFO] modules.template_handler: Foto 41/70: WhatsApp Image 2026-06-05 at 18.14.27.jpeg → linha 40, coluna 0
+2026-06-11 08:00:33,480 [INFO] modules.template_handler: Foto 42/70: WhatsApp Image 2026-06-05 at 18.14.27 (1).jpeg → linha 40, coluna 1
+2026-06-11 08:00:33,492 [INFO] modules.template_handler: Foto 43/70: WhatsApp Image 2026-06-05 at 18.14.27 (2).jpeg → linha 42, coluna 0
+2026-06-11 08:00:33,503 [INFO] modules.template_handler: Foto 44/70: WhatsApp Image 2026-06-05 at 18.14.27 (3).jpeg → linha 42, coluna 1
+2026-06-11 08:00:33,516 [INFO] modules.template_handler: Foto 45/70: WhatsApp Image 2026-06-05 at 18.14.28.jpeg → linha 44, coluna 0
+2026-06-11 08:00:33,528 [INFO] modules.template_handler: Foto 46/70: WhatsApp Image 2026-06-05 at 18.14.28 (1).jpeg → linha 44, coluna 1
+2026-06-11 08:00:33,540 [INFO] modules.template_handler: Foto 47/70: WhatsApp Image 2026-06-05 at 18.14.28 (2).jpeg → linha 46, coluna 0
+2026-06-11 08:00:33,552 [INFO] modules.template_handler: Foto 48/70: WhatsApp Image 2026-06-05 at 18.14.28 (3).jpeg → linha 46, coluna 1
+2026-06-11 08:00:33,565 [INFO] modules.template_handler: Foto 49/70: WhatsApp Image 2026-06-05 at 18.14.28 (4).jpeg → linha 48, coluna 0
+2026-06-11 08:00:33,579 [INFO] modules.template_handler: Foto 50/70: WhatsApp Image 2026-06-05 at 18.14.29.jpeg → linha 48, coluna 1
+2026-06-11 08:00:33,593 [INFO] modules.template_handler: Foto 51/70: WhatsApp Image 2026-06-05 at 18.14.29 (1).jpeg → linha 50, coluna 0
+2026-06-11 08:00:33,608 [INFO] modules.template_handler: Foto 52/70: WhatsApp Image 2026-06-05 at 18.14.29 (2).jpeg → linha 50, coluna 1
+2026-06-11 08:00:33,623 [INFO] modules.template_handler: Foto 53/70: WhatsApp Image 2026-06-05 at 18.14.29 (3).jpeg → linha 52, coluna 0
+2026-06-11 08:00:33,637 [INFO] modules.template_handler: Foto 54/70: WhatsApp Image 2026-06-05 at 18.14.30.jpeg → linha 52, coluna 1
+2026-06-11 08:00:33,651 [INFO] modules.template_handler: Foto 55/70: WhatsApp Image 2026-06-05 at 18.14.30 (1).jpeg → linha 54, coluna 0
+2026-06-11 08:00:33,667 [INFO] modules.template_handler: Foto 56/70: WhatsApp Image 2026-06-05 at 18.14.30 (2).jpeg → linha 54, coluna 1
+2026-06-11 08:00:33,682 [INFO] modules.template_handler: Foto 57/70: WhatsApp Image 2026-06-05 at 18.14.30 (3).jpeg → linha 56, coluna 0
+2026-06-11 08:00:33,696 [INFO] modules.template_handler: Foto 58/70: WhatsApp Image 2026-06-05 at 18.14.30 (4).jpeg → linha 56, coluna 1
+2026-06-11 08:00:33,711 [INFO] modules.template_handler: Foto 59/70: WhatsApp Image 2026-06-05 at 18.14.31.jpeg → linha 58, coluna 0
+2026-06-11 08:00:33,727 [INFO] modules.template_handler: Foto 60/70: WhatsApp Image 2026-06-05 at 18.14.31 (1).jpeg → linha 58, coluna 1
+2026-06-11 08:00:33,743 [INFO] modules.template_handler: Foto 61/70: WhatsApp Image 2026-06-05 at 18.14.31 (2).jpeg → linha 60, coluna 0
+2026-06-11 08:00:33,759 [INFO] modules.template_handler: Foto 62/70: WhatsApp Image 2026-06-05 at 18.14.31 (3).jpeg → linha 60, coluna 1
+2026-06-11 08:00:33,780 [INFO] modules.template_handler: Foto 63/70: WhatsApp Image 2026-06-05 at 18.14.32.jpeg → linha 62, coluna 0
+2026-06-11 08:00:33,797 [INFO] modules.template_handler: Foto 64/70: WhatsApp Image 2026-06-05 at 18.14.32 (1).jpeg → linha 62, coluna 1
+2026-06-11 08:00:33,813 [INFO] modules.template_handler: Foto 65/70: WhatsApp Image 2026-06-05 at 18.14.32 (2).jpeg → linha 64, coluna 0
+2026-06-11 08:00:33,832 [INFO] modules.template_handler: Foto 66/70: WhatsApp Image 2026-06-05 at 18.14.32 (3).jpeg → linha 64, coluna 1
+2026-06-11 08:00:33,854 [INFO] modules.template_handler: Foto 67/70: WhatsApp Image 2026-06-05 at 18.14.33 (1).jpeg → linha 66, coluna 0
+2026-06-11 08:00:33,873 [INFO] modules.template_handler: Foto 68/70: WhatsApp Image 2026-06-05 at 18.14.33 (2).jpeg → linha 66, coluna 1
+2026-06-11 08:00:33,891 [INFO] modules.template_handler: Foto 69/70: WhatsApp Image 2026-06-05 at 18.14.33 (3).jpeg → linha 68, coluna 0
+2026-06-11 08:00:33,909 [INFO] modules.template_handler: Foto 70/70: WhatsApp Image 2026-06-05 at 18.14.33 (4).jpeg → linha 68, coluna 1
+2026-06-11 08:00:33,910 [INFO] modules.template_handler: Preenchimento concluído: 70 fotos inseridas
+2026-06-11 08:00:34,655 [INFO] modules.template_handler: Documento salvo: C:\Users\FKENG-PHB\Documents\DG\G2M\PODAS\SYSTEM\dist\relatorios_gerados\1111111111_Relatorio_de_Podas_FK_Eng_PHB.docx
+2026-06-11 08:00:34,678 [INFO] Sistema: Relatório gerado com sucesso: C:\Users\FKENG-PHB\Documents\DG\G2M\PODAS\SYSTEM\dist\relatorios_gerados\1111111111_Relatorio_de_Podas_FK_Eng_PHB.docx

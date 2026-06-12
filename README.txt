@@ -1,6 +1,6 @@
 ================================================================================
   SISTEMA AUTOMÁTICO DE RELATÓRIOS DE PODA - EQUATORIAL
-  FK Engenharia e Serviços LTDA
+  FK Engenharia
 ================================================================================
 
   Manual do Usuário
