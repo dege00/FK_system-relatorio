@@ -1,90 +1,87 @@
 <div align="center">
 
-# Sistema Automático de Relatórios
+# SISTEMA AUTOMÁTICO DE RELATÓRIOS
 
-<img src="img/Layout.png" alt="Layout do Sistema" width="900"/>
+### Automação de Relatórios de Podas e Obras
 
-### FK Engenharia e Serviços LTDA
+<img src="./img/Layout.png" width="1000">
 
-Automação de relatórios técnicos de Podas e Obras utilizando Python.
+<br>
+
+> Sistema desenvolvido em Python para automatizar a criação de relatórios técnicos, reduzindo tempo de operação, padronizando documentos e organizando evidências fotográficas de forma automática.
 
 </div>
 
 ---
 
-## Sobre o Projeto
+# Sobre o Projeto
 
-Este projeto nasceu de uma necessidade real do meu dia a dia profissional.
+Durante a execução de serviços em campo, uma das tarefas mais repetitivas era a montagem manual de relatórios técnicos. Organizar fotografias, preencher documentos, identificar evidências e manter um padrão visual exigia tempo e atenção.
 
-Grande parte do tempo era gasto organizando fotografias, preenchendo documentos Word e montando evidências manualmente. Com isso surgiu a ideia de desenvolver uma ferramenta capaz de automatizar esse processo e tornar a elaboração dos relatórios mais rápida e organizada.
+Com o objetivo de reduzir esse trabalho manual, este sistema foi desenvolvido para automatizar grande parte desse processo, permitindo gerar relatórios completos em poucos cliques.
 
-O sistema foi criado inicialmente para relatórios de Podas e posteriormente expandido para atender também relatórios de Obras.
-
----
-
-## Funcionalidades
-
-✔ Geração automática de relatórios de Podas
-
-✔ Geração automática de relatórios de Obras
-
-✔ Organização automática das evidências fotográficas
-
-✔ Preenchimento automático de documentos Word (.docx)
-
-✔ Interface gráfica desenvolvida em Python
-
-✔ Modo Claro e Modo Escuro
-
-✔ Registro de Logs
-
-✔ Geração de executável para distribuição interna
+O projeto começou com a automação de **Relatórios de Podas** e posteriormente passou a incluir também **Relatórios de Obras**, mantendo a mesma proposta: transformar uma atividade repetitiva em um processo simples e rápido.
 
 ---
 
-## Tecnologias Utilizadas
+# Principais Recursos
 
-```text
+- Geração automática de relatórios Word (.docx)
+- Organização automática das evidências fotográficas
+- Relatórios de Podas
+- Relatórios de Obras
+- Interface gráfica desenvolvida em Python
+- Modo Claro e Modo Escuro
+- Sistema de Logs
+- Distribuição através de executável Windows
+
+---
+
+# Tecnologias Utilizadas
+
+```python
 Python
 CustomTkinter
 Python-Docx
-Pillow (PIL)
+Pillow
 Piexif
 PyInstaller
 ```
 
 ---
 
-## Inteligência Artificial
+# Inteligência Artificial
 
-O desenvolvimento deste projeto contou com grande apoio de ferramentas de Inteligência Artificial.
+Este projeto contou com grande auxílio de ferramentas de Inteligência Artificial durante seu desenvolvimento.
 
-A IA foi utilizada como ferramenta de estudo, auxílio na resolução de problemas, correção de erros e implementação de funcionalidades, permitindo acelerar o desenvolvimento e adquirir conhecimento durante todo o processo.
+A IA foi utilizada como apoio para aprendizado, pesquisa, correção de erros, estruturação do código e implementação de funcionalidades.
 
----
-
-## Objetivo
-
-Este projeto não possui fins lucrativos.
-
-Foi desenvolvido para auxiliar nas atividades realizadas durante minha rotina de trabalho e também como forma de aprendizado em programação, automação de documentos e desenvolvimento de sistemas desktop.
+Mesmo utilizando esse suporte, todas as adaptações, validações e regras de negócio foram desenvolvidas e ajustadas conforme as necessidades reais encontradas durante a utilização do sistema.
 
 ---
 
-## Aviso
+# Objetivo
 
-Este repositório tem finalidade de demonstração, estudo e documentação do projeto.
+Este projeto foi criado sem fins lucrativos.
 
-Todo o código-fonte presente neste repositório é protegido por direitos autorais.
+Seu principal objetivo é auxiliar nas atividades profissionais realizadas diariamente, além de servir como ferramenta de estudo e evolução na área de desenvolvimento de software.
 
-Não é permitida a utilização comercial, redistribuição, modificação ou reprodução deste sistema sem autorização prévia do autor.
+---
+
+# Aviso
+
+Este repositório foi criado para demonstração do projeto e documentação do seu desenvolvimento.
+
+Todos os direitos sobre o código-fonte permanecem reservados ao autor.
+
+Não é permitida a utilização, redistribuição ou comercialização deste sistema sem autorização prévia.
 
 ---
 
 <div align="center">
 
-**Desenvolvido por Diego**
+### Desenvolvido por Diego
 
-2026
+FK Engenharia e Serviços LTDA
 
 </div>
