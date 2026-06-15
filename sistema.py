@@ -157,14 +157,23 @@ class SistemaPodaApp(ctk.CTk):
             self.pasta_modelo.mkdir(parents=True, exist_ok=True)
             logger.info('Pasta modelo criada.')
 
-        # Verifica se o template já existe na pasta modelo
+        # Verifica se o template de Podas já existe na pasta modelo
         templates = list(self.pasta_modelo.glob('*_Relatorio_de_Podas_FK_Eng_PHB.docx'))
         if not templates:
             origem_modelo = Path(self._resource_path('modelo'))
             templates_origem = list(origem_modelo.glob('*_Relatorio_de_Podas_FK_Eng_PHB.docx'))
             if templates_origem:
                 shutil.copy2(str(templates_origem[0]), str(self.pasta_modelo / templates_origem[0].name))
-                logger.info('Modelo padrão copiado.')
+                logger.info('Modelo de Podas copiado.')
+
+        # Verifica se o template de Obras já existe na pasta modelo
+        templates_obra = list(self.pasta_modelo.glob('*Relatório_de_Conclusão_de_Obra_FK_Eng_PHB.docx'))
+        if not templates_obra:
+            origem_modelo = Path(self._resource_path('modelo'))
+            templates_obra_origem = list(origem_modelo.glob('*Relatório_de_Conclusão_de_Obra_FK_Eng_PHB.docx'))
+            if templates_obra_origem:
+                shutil.copy2(str(templates_obra_origem[0]), str(self.pasta_modelo / templates_obra_origem[0].name))
+                logger.info('Modelo de Obras copiado.')
 
         logger.info('Estrutura do sistema verificada.')
 
@@ -967,14 +976,14 @@ class SistemaPodaApp(ctk.CTk):
         logger.info(f'Postes: {self.obra_handler.total_postes}')
         logger.info(f'Fotos totais: {self.obra_handler.total_fotos}')
 
-        templates = list(self.pasta_modelo.glob('*Obra*.docx'))
-        if not templates:
+        template_name = 'XXXXXXX Relatório_de_Conclusão_de_Obra_FK_Eng_PHB.docx'
+        template_path = self.pasta_modelo / template_name
+        if not template_path.exists():
             raise FileNotFoundError(
-                f'Template de Obras não encontrado em: {self.pasta_modelo}\n'
-                'Certifique-se de que o arquivo "Relatório de Conclusão de Obra" '
-                'esteja na pasta modelo/.'
+                f'Template de Obras não encontrado.\n'
+                f'Caminho verificado: {template_path}\n'
+                f'Arquivo procurado: {template_name}'
             )
-        template_path = templates[0]
         logger.info(f'Template encontrado: {template_path.name}')
 
         nome_saida = f'{projeto_id}_Relatorio_de_Conclusao_de_Obra_FK_Eng_PHB.docx'

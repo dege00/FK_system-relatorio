@@ -1,3 +1,56 @@
 2026-06-15 11:29:45,978 [INFO] Sistema: Pasta modelo criada.
 2026-06-15 11:29:45,980 [INFO] Sistema: Modelo padrão copiado.
 2026-06-15 11:29:45,980 [INFO] Sistema: Estrutura do sistema verificada.
+2026-06-15 11:29:47,111 [INFO] Sistema: Sistema iniciado
+2026-06-15 11:29:53,031 [INFO] Sistema: Tema alterado para: dark
+2026-06-15 11:29:54,205 [INFO] Sistema: Módulo de Obras selecionado.
+2026-06-15 11:29:57,008 [INFO] Sistema: Voltou ao menu principal.
+2026-06-15 11:29:59,139 [INFO] Sistema: Log limpo pelo usuário
+2026-06-15 11:43:43,937 [INFO] Sistema: Estrutura do sistema verificada.
+2026-06-15 11:43:44,851 [INFO] Sistema: Sistema iniciado
+2026-06-15 11:43:46,574 [INFO] Sistema: Tema alterado para: light
+2026-06-15 11:43:47,246 [INFO] Sistema: Tema alterado para: dark
+2026-06-15 11:43:47,691 [INFO] Sistema: Log limpo pelo usuário
+2026-06-15 11:43:49,718 [INFO] Sistema: Módulo de Obras selecionado.
+2026-06-15 11:43:52,804 [INFO] Sistema: Modo de obra alterado para: sequencia
+2026-06-15 11:44:39,620 [INFO] Sistema: Pasta selecionada: C:/Users/FKENG-PHB/Documents/DG/G2M/CNTRL OBRAS/440189903 | Modo: sequencia
+2026-06-15 11:44:42,933 [INFO] Sistema: Iniciando análise da obra. Projeto: 440189903 | Modo: sequencia
+2026-06-15 11:44:42,936 [INFO] modules.obras_module: 8 fotos carregadas de C:\Users\FKENG-PHB\Documents\DG\G2M\CNTRL OBRAS\440189903
+2026-06-15 11:44:42,936 [INFO] modules.obras_module: Fotos por poste: 4
+2026-06-15 11:44:42,936 [INFO] modules.obras_module: POSTE 01: 4 fotos
+2026-06-15 11:44:42,936 [INFO] modules.obras_module: POSTE 02: 4 fotos
+2026-06-15 11:44:42,936 [INFO] modules.obras_module: Total de postes: 2
+2026-06-15 11:44:42,936 [INFO] modules.obras_module: Total de fotos: 8
+2026-06-15 11:44:42,936 [INFO] Sistema: Projeto: 440189903
+2026-06-15 11:44:42,936 [INFO] Sistema: Modo: sequencia
+2026-06-15 11:44:46,187 [INFO] Sistema: Iniciando geração do relatório de obra. Projeto: 440189903
+2026-06-15 11:44:46,187 [INFO] Sistema: Modo: sequencia
+2026-06-15 11:44:46,187 [INFO] Sistema: Postes: 2
+2026-06-15 11:44:46,187 [INFO] Sistema: Fotos totais: 8
+2026-06-15 11:44:46,187 [ERROR] Sistema: Erro durante a geração do relatório de obra
+Traceback (most recent call last):
+  File "sistema.py", line 951, in _gerar_relatorio_obra
+  File "sistema.py", line 972, in _executar_geracao_obra
+FileNotFoundError: Template de Obras não encontrado em: C:\Users\FKENG-PHB\Desktop\SYSTEM\dist\modelo
+Certifique-se de que o arquivo "Relatório de Conclusão de Obra" esteja na pasta modelo/.
+2026-06-15 11:44:54,808 [INFO] Sistema: Pasta selecionada: C:/Users/FKENG-PHB/Documents/DG/G2M/CNTRL OBRAS/440189903 | Modo: sequencia
+2026-06-15 11:44:59,354 [INFO] Sistema: Iniciando geração do relatório de obra. Projeto: 440189903
+2026-06-15 11:44:59,354 [INFO] Sistema: Modo: sequencia
+2026-06-15 11:44:59,354 [INFO] Sistema: Postes: 2
+2026-06-15 11:44:59,354 [INFO] Sistema: Fotos totais: 8
+2026-06-15 11:44:59,354 [ERROR] Sistema: Erro durante a geração do relatório de obra
+Traceback (most recent call last):
+  File "sistema.py", line 951, in _gerar_relatorio_obra
+  File "sistema.py", line 972, in _executar_geracao_obra
+FileNotFoundError: Template de Obras não encontrado em: C:\Users\FKENG-PHB\Desktop\SYSTEM\dist\modelo
+Certifique-se de que o arquivo "Relatório de Conclusão de Obra" esteja na pasta modelo/.
+2026-06-15 11:45:02,652 [INFO] Sistema: Iniciando geração do relatório de obra. Projeto: 440189903
+2026-06-15 11:45:02,652 [INFO] Sistema: Modo: sequencia
+2026-06-15 11:45:02,653 [INFO] Sistema: Postes: 2
+2026-06-15 11:45:02,653 [INFO] Sistema: Fotos totais: 8
+2026-06-15 11:45:02,653 [ERROR] Sistema: Erro durante a geração do relatório de obra
+Traceback (most recent call last):
+  File "sistema.py", line 951, in _gerar_relatorio_obra
+  File "sistema.py", line 972, in _executar_geracao_obra
+FileNotFoundError: Template de Obras não encontrado em: C:\Users\FKENG-PHB\Desktop\SYSTEM\dist\modelo
+Certifique-se de que o arquivo "Relatório de Conclusão de Obra" esteja na pasta modelo/.
