@@ -120,6 +120,7 @@ Projeto desenvolvido para auxiliar a execução e documentação de serviços re
 
 <div align="center">
 
- Nao utilizei gitignore, mas foi desenvolvido com Python, estudo contínuo e muitas horas de café.
+ TERMINAL: pip install -r requirements.txt
+ Desenvolvido com Python, estudo contínuo e muitas horas de café.
 
 </div>
