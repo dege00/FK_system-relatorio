@@ -120,7 +120,7 @@ Projeto desenvolvido para auxiliar a execução e documentação de serviços re
 
 <div align="center">
 
- TERMINAL: pip install -r requirements.txt
- Desenvolvido com Python, estudo contínuo e muitas horas de café.
+ pip install -r requirements.txt
+
 
 </div>
