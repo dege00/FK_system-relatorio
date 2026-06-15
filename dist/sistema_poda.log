@@ -54,3 +54,46 @@ Traceback (most recent call last):
   File "sistema.py", line 972, in _executar_geracao_obra
 FileNotFoundError: Template de Obras não encontrado em: C:\Users\FKENG-PHB\Desktop\SYSTEM\dist\modelo
 Certifique-se de que o arquivo "Relatório de Conclusão de Obra" esteja na pasta modelo/.
+2026-06-15 11:53:55,509 [INFO] Sistema: Estrutura do sistema verificada.
+2026-06-15 11:53:56,624 [INFO] Sistema: Sistema iniciado
+2026-06-15 11:54:05,218 [INFO] Sistema: Módulo de Obras selecionado.
+2026-06-15 11:54:06,121 [INFO] Sistema: Modo de obra alterado para: sequencia
+2026-06-15 11:54:11,261 [INFO] Sistema: Pasta selecionada: C:/Users/FKENG-PHB/Documents/DG/G2M/CNTRL OBRAS/440189903 | Modo: sequencia
+2026-06-15 11:54:17,809 [INFO] Sistema: Iniciando análise da obra. Projeto: 440189903 | Modo: sequencia
+2026-06-15 11:54:17,817 [INFO] modules.obras_module: 8 fotos carregadas de C:\Users\FKENG-PHB\Documents\DG\G2M\CNTRL OBRAS\440189903
+2026-06-15 11:54:17,817 [INFO] modules.obras_module: Fotos por poste: 4
+2026-06-15 11:54:17,817 [INFO] modules.obras_module: POSTE 01: 4 fotos
+2026-06-15 11:54:17,817 [INFO] modules.obras_module: POSTE 02: 4 fotos
+2026-06-15 11:54:17,817 [INFO] modules.obras_module: Total de postes: 2
+2026-06-15 11:54:17,817 [INFO] modules.obras_module: Total de fotos: 8
+2026-06-15 11:54:17,817 [INFO] Sistema: Projeto: 440189903
+2026-06-15 11:54:17,817 [INFO] Sistema: Modo: sequencia
+2026-06-15 11:54:20,456 [INFO] Sistema: Iniciando geração do relatório de obra. Projeto: 440189903
+2026-06-15 11:54:20,457 [INFO] Sistema: Modo: sequencia
+2026-06-15 11:54:20,457 [INFO] Sistema: Postes: 2
+2026-06-15 11:54:20,457 [INFO] Sistema: Fotos totais: 8
+2026-06-15 11:54:20,457 [INFO] Sistema: Template encontrado: XXXXXXX Relatório_de_Conclusão_de_Obra_FK_Eng_PHB.docx
+2026-06-15 11:54:20,458 [INFO] Sistema: Ordem das fotos:
+2026-06-15 11:54:20,459 [INFO] Sistema:   1. photo_2026-05-24_14-55-46.jpg
+2026-06-15 11:54:20,459 [INFO] Sistema:   2. photo_2026-05-24_14-55-47.jpg
+2026-06-15 11:54:20,459 [INFO] Sistema:   3. photo_2026-05-24_14-55-49.jpg
+2026-06-15 11:54:20,459 [INFO] Sistema:   4. photo_2026-05-24_14-55-47 (2).jpg
+2026-06-15 11:54:20,459 [INFO] Sistema:   5. photo_2026-05-24_14-55-47 (3).jpg
+2026-06-15 11:54:20,459 [INFO] Sistema:   6. photo_2026-05-24_14-55-48.jpg
+2026-06-15 11:54:20,459 [INFO] Sistema:   7. photo_2026-05-24_14-55-48 (2).jpg
+2026-06-15 11:54:20,459 [INFO] Sistema:   8. photo_2026-05-24_14-55-48 (3).jpg
+2026-06-15 11:54:20,487 [INFO] modules.template_handler: Tabela de evidências encontrada: 78 linhas × 2 colunas
+2026-06-15 11:54:20,488 [INFO] modules.template_handler: Placeholder substituído: XXXXXXX → 440189903
+2026-06-15 11:54:20,489 [INFO] modules.template_handler: Preenchendo 8 fotos na tabela de evidências
+2026-06-15 11:54:20,489 [INFO] modules.template_handler: Capacidade atual: 78 fotos (39 linhas de foto)
+2026-06-15 11:54:20,495 [INFO] modules.template_handler: Foto 1/8: photo_2026-05-24_14-55-46.jpg → linha 0, coluna 0
+2026-06-15 11:54:20,498 [INFO] modules.template_handler: Foto 2/8: photo_2026-05-24_14-55-47.jpg → linha 0, coluna 1
+2026-06-15 11:54:20,504 [INFO] modules.template_handler: Foto 3/8: photo_2026-05-24_14-55-49.jpg → linha 2, coluna 0
+2026-06-15 11:54:20,510 [INFO] modules.template_handler: Foto 4/8: photo_2026-05-24_14-55-47 (2).jpg → linha 2, coluna 1
+2026-06-15 11:54:20,514 [INFO] modules.template_handler: Foto 5/8: photo_2026-05-24_14-55-47 (3).jpg → linha 4, coluna 0
+2026-06-15 11:54:20,520 [INFO] modules.template_handler: Foto 6/8: photo_2026-05-24_14-55-48.jpg → linha 4, coluna 1
+2026-06-15 11:54:20,526 [INFO] modules.template_handler: Foto 7/8: photo_2026-05-24_14-55-48 (2).jpg → linha 6, coluna 0
+2026-06-15 11:54:20,531 [INFO] modules.template_handler: Foto 8/8: photo_2026-05-24_14-55-48 (3).jpg → linha 6, coluna 1
+2026-06-15 11:54:20,531 [INFO] modules.template_handler: Preenchimento concluído: 8 fotos inseridas
+2026-06-15 11:54:20,595 [INFO] modules.template_handler: Documento salvo: C:\Users\FKENG-PHB\Desktop\SYSTEM\dist\relatorios_gerados\440189903_Relatorio_de_Conclusao_de_Obra_FK_Eng_PHB.docx
+2026-06-15 11:54:20,605 [INFO] Sistema: Relatório de Obra gerado com sucesso: C:\Users\FKENG-PHB\Desktop\SYSTEM\dist\relatorios_gerados\440189903_Relatorio_de_Conclusao_de_Obra_FK_Eng_PHB.docx
