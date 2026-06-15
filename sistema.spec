@@ -5,7 +5,7 @@ a = Analysis(
     ['sistema.py'],
     pathex=[],
     binaries=[],
-    datas=[('assets', 'assets'), ('modelo', 'modelo')],
+    datas=[('modelo', 'modelo'), ('assets', 'assets')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -35,4 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon=['assets\\logo-fk.ico'],
 )

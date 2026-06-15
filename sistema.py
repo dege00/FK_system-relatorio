@@ -12,7 +12,16 @@ import customtkinter as ctk
 
 from modules.photo_handler import PhotoHandler, PhotoInfo
 from modules.template_handler import TemplateHandler
-from modules.obras_module import ObraHandler
+from modules.obras_module import ObraHandler, SequenciaObraHandler
+from pathlib import Path
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = Path(".").absolute()
+
+    return str(Path(base_path) / relative_path)
 
 # ─── Configuração de Logging ───────────────────────────────────────────────
 if getattr(sys, 'frozen', False):
@@ -61,6 +70,16 @@ class SistemaPodaApp(ctk.CTk):
     def __init__(self):
         super().__init__()
 
+        import ctypes
+
+        myappid = 'fkengenharia.sistema.relatorios.1.0'
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+
+        icone = resource_path("assets/logo-fk.ico")
+
+        self.iconbitmap(icone)
+        self.wm_iconbitmap(icone)
+
         # ─── Configuração da Janela ──────────────────────────────────────────
         self.title('Sistema Automático de Relatórios - Equatorial')
         self.geometry('680x680')
@@ -84,6 +103,10 @@ class SistemaPodaApp(ctk.CTk):
         # Verifica e cria a estrutura necessária (modelo, etc.)
         self._verificar_estrutura()
 
+        # Pasta de materiais
+        self.pasta_materiais = self.dir_atual / 'Mtrs_Estruturas'
+        self.pasta_materiais.mkdir(parents=True, exist_ok=True)
+
         # ─── Variáveis de Estado ─────────────────────────────────────────────
         self.pasta_fotos_selecionada = None
         self.photo_handler = None
@@ -94,6 +117,10 @@ class SistemaPodaApp(ctk.CTk):
         self.modo_atual = 'menu'
         self.pasta_obra_selecionada = None
         self.obra_handler = None
+        self.material_selecionado = None
+        self.material_filtro_atual = ''
+        self.modo_obra = 'pastas'
+        self.fotos_por_poste = 4
 
         # ─── Construção da Interface ─────────────────────────────────────────
         self._construir_interface()
@@ -178,6 +205,7 @@ class SistemaPodaApp(ctk.CTk):
         self._construir_menu_principal()
         self._construir_interface_podas()
         self._construir_interface_obras()
+        self._construir_interface_materiais()
 
         self._construir_log()
         self._construir_rodape()
@@ -205,7 +233,7 @@ class SistemaPodaApp(ctk.CTk):
     def _construir_menu_principal(self):
         self.frame_menu = ctk.CTkFrame(self.frame_conteudo, fg_color='transparent')
         self.frame_menu.grid_rowconfigure(0, weight=1)
-        self.frame_menu.grid_rowconfigure(4, weight=1)
+        self.frame_menu.grid_rowconfigure(5, weight=1)
         self.frame_menu.grid_columnconfigure(0, weight=1)
 
         label_modulo = ctk.CTkLabel(
@@ -242,7 +270,21 @@ class SistemaPodaApp(ctk.CTk):
             corner_radius=4,
             command=self._mostrar_obras
         )
-        btn_obras.grid(row=3, column=0, pady=(0, 0))
+        btn_obras.grid(row=3, column=0, pady=(0, 8))
+
+        btn_materiais = ctk.CTkButton(
+            self.frame_menu,
+            text='Biblioteca de Materiais',
+            font=ctk.CTkFont(size=13),
+            height=38,
+            width=280,
+            fg_color='#C84B0C',
+            hover_color='#A03A08',
+            text_color='#FFFFFF',
+            corner_radius=4,
+            command=self._mostrar_materiais
+        )
+        btn_materiais.grid(row=4, column=0, pady=(0, 0))
 
     # ─── Interface de Podas (extraída sem alterações) ─────────────────────────
     def _construir_interface_podas(self):
@@ -374,7 +416,7 @@ class SistemaPodaApp(ctk.CTk):
 
         self.entry_id_obra = ctk.CTkEntry(
             self.frame_obras,
-            placeholder_text='Ex: 440182639',
+            placeholder_text='Ex: 440100001',
             font=ctk.CTkFont(size=14),
             height=35
         )
@@ -410,6 +452,67 @@ class SistemaPodaApp(ctk.CTk):
             command=self._selecionar_pasta_obra
         )
         btn_selecionar_obra.pack(side='right')
+
+        # ─── Método de Organização ────────────────────────────────────────────
+        self.frame_modo_obra = ctk.CTkFrame(self.frame_obras, fg_color='transparent')
+        self.frame_modo_obra.pack(fill='x', padx=30, pady=(0, 5))
+
+        label_modo = ctk.CTkLabel(
+            self.frame_modo_obra,
+            text='Método de Organização:',
+            font=ctk.CTkFont(size=13),
+            anchor='w'
+        )
+        label_modo.pack(fill='x')
+
+        frame_radio = ctk.CTkFrame(self.frame_modo_obra, fg_color='transparent')
+        frame_radio.pack(fill='x', pady=(2, 0))
+
+        self.radio_var_obra = ctk.StringVar(value='pastas')
+
+        self.radio_pastas = ctk.CTkRadioButton(
+            frame_radio,
+            text='Organização por Pastas',
+            variable=self.radio_var_obra,
+            value='pastas',
+            font=ctk.CTkFont(size=12),
+            command=lambda: self._alternar_modo_obra('pastas')
+        )
+        self.radio_pastas.pack(side='left', padx=(0, 20))
+
+        self.radio_sequencia = ctk.CTkRadioButton(
+            frame_radio,
+            text='Sequência de Fotos',
+            variable=self.radio_var_obra,
+            value='sequencia',
+            font=ctk.CTkFont(size=12),
+            command=lambda: self._alternar_modo_obra('sequencia')
+        )
+        self.radio_sequencia.pack(side='left')
+
+        # ─── Fotos por Poste (modo sequência) ─────────────────────────────────
+        self.frame_fotos_poste = ctk.CTkFrame(self.frame_obras, fg_color='transparent')
+
+        label_fotos_poste = ctk.CTkLabel(
+            self.frame_fotos_poste,
+            text='Quantidade de Fotos por Poste:',
+            font=ctk.CTkFont(size=13),
+            anchor='w'
+        )
+        label_fotos_poste.pack(fill='x')
+
+        self.entry_fotos_por_poste = ctk.CTkEntry(
+            self.frame_fotos_poste,
+            placeholder_text='Ex: 4',
+            font=ctk.CTkFont(size=14),
+            height=35
+        )
+        self.entry_fotos_por_poste.pack(fill='x', pady=(3, 0))
+        self.entry_fotos_por_poste.insert(0, '4')
+
+        # Inicia oculto (modo pastas é o padrão)
+        self.frame_fotos_poste.pack(fill='x', padx=30, pady=(5, 5))
+        self.frame_fotos_poste.pack_forget()
 
         # ─── Linha Separadora ────────────────────────────────────────────────
         separador_obra = ctk.CTkFrame(self.frame_obras, height=2, fg_color=('gray70', 'gray30'))
@@ -483,17 +586,147 @@ class SistemaPodaApp(ctk.CTk):
         )
         self.label_previa.pack(pady=20)
 
+    # ─── Interface da Biblioteca de Materiais ─────────────────────────────────
+    def _construir_interface_materiais(self):
+        self.frame_materiais = ctk.CTkFrame(self.frame_conteudo, fg_color='transparent')
+
+        # ─── Campo de Pesquisa ───────────────────────────────────────────────
+        label_pesquisa = ctk.CTkLabel(
+            self.frame_materiais,
+            text='Pesquisar Material:',
+            font=ctk.CTkFont(size=14),
+            anchor='w'
+        )
+        label_pesquisa.pack(fill='x', padx=30, pady=(15, 0))
+
+        self.entry_pesquisa_material = ctk.CTkEntry(
+            self.frame_materiais,
+            placeholder_text='Digite o nome do material...',
+            font=ctk.CTkFont(size=14),
+            height=35
+        )
+        self.entry_pesquisa_material.pack(fill='x', padx=30, pady=(3, 10))
+        self.entry_pesquisa_material.bind('<KeyRelease>', self._filtrar_materiais)
+
+        # ─── Lista de Materiais ──────────────────────────────────────────────
+        label_lista = ctk.CTkLabel(
+            self.frame_materiais,
+            text='Materiais Disponíveis:',
+            font=ctk.CTkFont(size=14),
+            anchor='w'
+        )
+        label_lista.pack(fill='x', padx=30, pady=(0, 5))
+
+        self.frame_lista_materiais = ctk.CTkScrollableFrame(
+            self.frame_materiais,
+            corner_radius=8,
+            height=180
+        )
+        self.frame_lista_materiais.pack(fill='x', padx=30, pady=(0, 10))
+
+        self.label_sem_materiais = ctk.CTkLabel(
+            self.frame_lista_materiais,
+            text='Nenhum material encontrado.',
+            font=ctk.CTkFont(size=12),
+            text_color=('gray50', 'gray50')
+        )
+        self.label_sem_materiais.pack(pady=20)
+
+        # ─── Informações do Material ─────────────────────────────────────────
+        self.frame_info_material = ctk.CTkFrame(self.frame_materiais, fg_color=('gray92', 'gray25'), corner_radius=4)
+        self.frame_info_material.pack(fill='x', padx=30, pady=(0, 10))
+
+        self.label_info_nome = ctk.CTkLabel(
+            self.frame_info_material,
+            text='Nome: ---',
+            font=ctk.CTkFont(size=12),
+            anchor='w'
+        )
+        self.label_info_nome.pack(fill='x', padx=12, pady=(6, 1))
+
+        self.label_info_data = ctk.CTkLabel(
+            self.frame_info_material,
+            text='Última alteração: ---',
+            font=ctk.CTkFont(size=11),
+            text_color=('gray40', 'gray60'),
+            anchor='w'
+        )
+        self.label_info_data.pack(fill='x', padx=12, pady=(0, 1))
+
+        self.label_info_tamanho = ctk.CTkLabel(
+            self.frame_info_material,
+            text='Tamanho: ---',
+            font=ctk.CTkFont(size=11),
+            text_color=('gray40', 'gray60'),
+            anchor='w'
+        )
+        self.label_info_tamanho.pack(fill='x', padx=12, pady=(0, 6))
+
+        # ─── Botões ──────────────────────────────────────────────────────────
+        frame_botoes = ctk.CTkFrame(self.frame_materiais, fg_color='transparent')
+        frame_botoes.pack(fill='x', padx=30, pady=(0, 10))
+
+        btn_abrir = ctk.CTkButton(
+            frame_botoes,
+            text='Abrir Material',
+            font=ctk.CTkFont(size=13),
+            height=38,
+            fg_color='#2E7D32',
+            hover_color='#1B5E20',
+            text_color='#FFFFFF',
+            corner_radius=4,
+            command=self._abrir_material
+        )
+        btn_abrir.pack(side='left', fill='x', expand=True, padx=(0, 5))
+
+        btn_pasta = ctk.CTkButton(
+            frame_botoes,
+            text='Mostrar Pasta',
+            font=ctk.CTkFont(size=13),
+            height=38,
+            fg_color='#1B3A5C',
+            hover_color='#2C5F8A',
+            text_color='#FFFFFF',
+            corner_radius=4,
+            command=self._mostrar_pasta_materiais
+        )
+        btn_pasta.pack(side='left', fill='x', expand=True, padx=5)
+
+        btn_adicionar = ctk.CTkButton(
+            frame_botoes,
+            text='Adicionar Material',
+            font=ctk.CTkFont(size=13),
+            height=38,
+            fg_color='#455A64',
+            hover_color='#37474F',
+            text_color='#FFFFFF',
+            corner_radius=4,
+            command=self._adicionar_material
+        )
+        btn_adicionar.pack(side='left', fill='x', expand=True, padx=(5, 0))
+
+        # ─── Status ──────────────────────────────────────────────────────────
+        self.label_status_material = ctk.CTkLabel(
+            self.frame_materiais,
+            text='Pronto.',
+            font=ctk.CTkFont(size=12),
+            text_color=('gray40', 'gray60')
+        )
+        self.label_status_material.pack(fill='x', padx=30, pady=(0, 10))
+
     # ─── Navegação entre Telas ────────────────────────────────────────────────
     def _mostrar_menu(self):
         self.frame_toolbar.pack_forget()
         self.frame_podas.pack_forget()
         self.frame_obras.pack_forget()
+        self.frame_materiais.pack_forget()
         self.frame_menu.pack(fill='both', expand=True)
         self.modo_atual = 'menu'
 
     def _mostrar_podas(self):
         self.frame_menu.pack_forget()
         self.frame_obras.pack_forget()
+        self.frame_materiais.pack_forget()
         self.frame_toolbar.pack(fill='x')
         self.frame_podas.pack(fill='both', expand=True)
         self.modo_atual = 'podas'
@@ -502,14 +735,46 @@ class SistemaPodaApp(ctk.CTk):
     def _mostrar_obras(self):
         self.frame_menu.pack_forget()
         self.frame_podas.pack_forget()
+        self.frame_materiais.pack_forget()
         self.frame_toolbar.pack(fill='x')
         self.frame_obras.pack(fill='both', expand=True)
         self.modo_atual = 'obras'
         logger.info('Módulo de Obras selecionado.')
 
+    def _mostrar_materiais(self):
+        self.frame_menu.pack_forget()
+        self.frame_podas.pack_forget()
+        self.frame_obras.pack_forget()
+        self.frame_toolbar.pack(fill='x')
+        self.frame_materiais.pack(fill='both', expand=True)
+        self.modo_atual = 'materiais'
+        self._atualizar_lista_materiais()
+        self.entry_pesquisa_material.focus()
+        logger.info('Biblioteca de Materiais selecionada.')
+
     def _voltar_menu(self):
         self._mostrar_menu()
         logger.info('Voltou ao menu principal.')
+
+    def _alternar_modo_obra(self, modo: str):
+        self.modo_obra = modo
+        self.obra_handler = None
+        self.btn_gerar_obra.configure(state='disabled')
+        self._limpar_previa_obra()
+        self.label_status_obra.configure(
+            text=f'Modo alterado para: {"Organização por Pastas" if modo == "pastas" else "Sequência de Fotos"}. Selecione a pasta.',
+            text_color=('gray40', 'gray60')
+        )
+        self.progress_bar_obra.set(0)
+        self.label_progresso_obra.configure(text='0 / 0 fotos processadas')
+        self.label_foto_atual_obra.configure(text='')
+
+        if modo == 'sequencia':
+            self.frame_fotos_poste.pack(fill='x', padx=30, pady=(5, 5))
+        else:
+            self.frame_fotos_poste.pack_forget()
+
+        logger.info(f'Modo de obra alterado para: {modo}')
 
     # ─── Seleção de Pasta de Obra ─────────────────────────────────────────────
     def _selecionar_pasta_obra(self):
@@ -535,6 +800,7 @@ class SistemaPodaApp(ctk.CTk):
             text='Pasta selecionada. Clique em ANALISAR OBRA.',
             text_color=('gray40', 'gray60')
         )
+        logger.info(f'Pasta selecionada: {pasta} | Modo: {self.modo_obra}')
 
     # ─── Análise da Obra ─────────────────────────────────────────────────────
     def _analisar_obra(self):
@@ -548,9 +814,22 @@ class SistemaPodaApp(ctk.CTk):
             messagebox.showwarning('Aviso', 'Por favor, selecione a pasta da obra.')
             return
 
+        logger.info(f'Iniciando análise da obra. Projeto: {projeto_id} | Modo: {self.modo_obra}')
         try:
-            self.obra_handler = ObraHandler(self.pasta_obra_selecionada, projeto_id)
+            if self.modo_obra == 'pastas':
+                self.obra_handler = ObraHandler(self.pasta_obra_selecionada, projeto_id)
+            else:
+                fotos_por_poste_str = self.entry_fotos_por_poste.get().strip()
+                if not fotos_por_poste_str.isdigit() or int(fotos_por_poste_str) < 1:
+                    messagebox.showwarning('Aviso', 'Informe uma quantidade válida de fotos por poste (número positivo).')
+                    self.entry_fotos_por_poste.focus()
+                    return
+                fotos_por_poste = int(fotos_por_poste_str)
+                self.fotos_por_poste = fotos_por_poste
+                self.obra_handler = SequenciaObraHandler(self.pasta_obra_selecionada, projeto_id, fotos_por_poste)
+
             logger.info(f'Projeto: {self.obra_handler.projeto_id}')
+            logger.info(f'Modo: {self.modo_obra}')
 
             self.label_status_obra.configure(
                 text=f'Projeto: {self.obra_handler.projeto_id}  |  '
@@ -684,6 +963,7 @@ class SistemaPodaApp(ctk.CTk):
     def _executar_geracao_obra(self, projeto_id: str):
         """Executa o pipeline de geração do relatório de obra."""
         logger.info(f'Iniciando geração do relatório de obra. Projeto: {projeto_id}')
+        logger.info(f'Modo: {self.modo_obra}')
         logger.info(f'Postes: {self.obra_handler.total_postes}')
         logger.info(f'Fotos totais: {self.obra_handler.total_fotos}')
 
@@ -754,6 +1034,140 @@ class SistemaPodaApp(ctk.CTk):
             text=f'Processando foto {atual} de {total}...',
             text_color='#1565C0'
         )
+
+    # ─── Funções da Biblioteca de Materiais ───────────────────────────────────
+    def _filtrar_materiais(self, event=None):
+        filtro = self.entry_pesquisa_material.get()
+        self.material_filtro_atual = filtro
+        self._atualizar_lista_materiais(filtro)
+
+    def _atualizar_lista_materiais(self, filtro=''):
+        for widget in self.frame_lista_materiais.winfo_children():
+            widget.destroy()
+
+        xlsx_files = sorted(self.pasta_materiais.glob('*.xlsx'))
+
+        if not xlsx_files:
+            self.label_sem_materiais = ctk.CTkLabel(
+                self.frame_lista_materiais,
+                text='Nenhum material encontrado.',
+                font=ctk.CTkFont(size=12),
+                text_color=('gray50', 'gray50')
+            )
+            self.label_sem_materiais.pack(pady=20)
+            self.material_selecionado = None
+            self._limpar_info_material()
+            return
+
+        filtro_lower = filtro.lower()
+        encontrou = False
+        for f in xlsx_files:
+            if filtro_lower and filtro_lower not in f.name.lower():
+                continue
+            encontrou = True
+
+            card = ctk.CTkFrame(self.frame_lista_materiais, fg_color=('gray97', 'gray18'), corner_radius=3)
+            card.pack(fill='x', padx=8, pady=(1, 1))
+
+            linha = ctk.CTkFrame(card, fg_color='transparent')
+            linha.pack(fill='x', padx=8, pady=4)
+
+            lbl_nome = ctk.CTkLabel(
+                linha,
+                text=f.name,
+                font=ctk.CTkFont(size=12, weight='bold'),
+                anchor='w'
+            )
+            lbl_nome.pack(side='left')
+
+            card.bind('<Button-1>', lambda e, path=f: self._selecionar_material(path))
+            linha.bind('<Button-1>', lambda e, path=f: self._selecionar_material(path))
+            lbl_nome.bind('<Button-1>', lambda e, path=f: self._selecionar_material(path))
+
+        if not encontrou:
+            self.label_sem_materiais = ctk.CTkLabel(
+                self.frame_lista_materiais,
+                text='Nenhum material encontrado para a pesquisa.',
+                font=ctk.CTkFont(size=12),
+                text_color=('gray50', 'gray50')
+            )
+            self.label_sem_materiais.pack(pady=20)
+            self.material_selecionado = None
+            self._limpar_info_material()
+
+    def _selecionar_material(self, path):
+        self.material_selecionado = path
+        stat = path.stat()
+        data_mod = datetime.fromtimestamp(stat.st_mtime).strftime('%d/%m/%Y %H:%M')
+        tamanho = stat.st_size
+        if tamanho < 1024:
+            tamanho_str = f'{tamanho} B'
+        elif tamanho < 1024 * 1024:
+            tamanho_str = f'{tamanho / 1024:.1f} KB'
+        else:
+            tamanho_str = f'{tamanho / (1024 * 1024):.1f} MB'
+
+        self.label_info_nome.configure(text=f'Nome: {path.name}')
+        self.label_info_data.configure(text=f'Última alteração: {data_mod}')
+        self.label_info_tamanho.configure(text=f'Tamanho: {tamanho_str}')
+        self.label_status_material.configure(
+            text=f'Selecionado: {path.name}',
+            text_color=('gray40', 'gray60')
+        )
+        logger.info(f'Material selecionado: {path.name}')
+
+    def _limpar_info_material(self):
+        self.label_info_nome.configure(text='Nome: ---')
+        self.label_info_data.configure(text='Última alteração: ---')
+        self.label_info_tamanho.configure(text='Tamanho: ---')
+
+    def _abrir_material(self):
+        if not self.material_selecionado:
+            messagebox.showwarning('Aviso', 'Selecione um material da lista.')
+            return
+        try:
+            os.startfile(str(self.material_selecionado))
+            logger.info(f'Material aberto: {self.material_selecionado.name}')
+        except Exception as e:
+            logger.error(f'Erro ao abrir material: {e}')
+            messagebox.showerror('Erro', f'Não foi possível abrir o material:\n{str(e)}')
+
+    def _mostrar_pasta_materiais(self):
+        try:
+            os.startfile(str(self.pasta_materiais))
+            logger.info('Pasta de materiais aberta no explorador.')
+        except Exception as e:
+            logger.error(f'Erro ao abrir pasta de materiais: {e}')
+
+    def _adicionar_material(self):
+        arquivo = filedialog.askopenfilename(
+            title='Selecione o material para adicionar',
+            filetypes=[('Planilhas Excel', '*.xlsx'), ('Todos os arquivos', '*.*')]
+        )
+        if not arquivo:
+            return
+
+        origem = Path(arquivo)
+        destino = self.pasta_materiais / origem.name
+
+        if destino.exists():
+            if not messagebox.askyesno(
+                'Confirmar Substituição',
+                f'O arquivo "{origem.name}" já existe.\nDeseja substituí-lo?'
+            ):
+                return
+
+        try:
+            shutil.copy2(str(origem), str(destino))
+            logger.info(f'Material adicionado: {origem.name}')
+            self.label_status_material.configure(
+                text=f'Material adicionado: {origem.name}',
+                text_color='#2E7D32'
+            )
+            self._atualizar_lista_materiais(self.entry_pesquisa_material.get())
+        except Exception as e:
+            logger.error(f'Erro ao adicionar material: {e}')
+            messagebox.showerror('Erro', f'Não foi possível adicionar o material:\n{str(e)}')
 
     def _construir_cabecalho(self):
         """Constrói o cabeçalho com logos e título central."""
